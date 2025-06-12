@@ -1,0 +1,11 @@
+[book]
+title = "Software Guide Book"
+src = ""
+language = "nl"
+
+[output.html]
+preferred-dark-theme = "ayu"
+git-repository-url = "https://github.com/AIM-ENE-feb25/pacman"
+edit-url-template = "https://github.com/AIM-ENE-feb25/pacman/tree/main/producten/software-guidebook/{path}"
+site-url = "/pacman/"
+hash-files = true

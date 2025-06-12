@@ -1,0 +1,24 @@
+@startuml "Context diagram voor Escape room systeem"
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+SHOW_PERSON_OUTLINE()
+HIDE_STEREOTYPE()
+
+
+title Context diagram voor Escape room systeem
+' Personen
+Person(operator, Operator,<<Persoon>>\nPersoon die het systeem beheert.)
+Person(backup, Backup-team,<<Persoon>>\n Team dat in de lege ruimte met de puzzels zit en toekijkt op de active-team.)
+
+' Systeem
+System(systeem, Escape room Systeem,<<Systeem>>\n Speelt scenario af en stuurt alle apparatuur aan.)
+
+' Externe systemen
+System_Ext(apparatuur, Overige aparatuur ,<<Extern systeem>>\nApparatuur waarmee beelden of hints worden getoond,$type="beamers, speakers, lampen")
+
+' Relaties
+Rel(operator, systeem, start systeem en activeert hints)
+Rel(backup, systeem, vult codes in)
+Rel(systeem, apparatuur, stuurt aan)
+SHOW_LEGEND()
+@enduml

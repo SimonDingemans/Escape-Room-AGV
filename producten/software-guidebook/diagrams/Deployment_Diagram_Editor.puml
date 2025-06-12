@@ -1,0 +1,29 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome
+!define MATERIAL https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/material
+!include DEVICONS/chrome.puml
+!include FONTAWESOME/server.puml
+!include MATERIAL/web.puml
+
+sprite TD <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" xmlns:v="https://vecta.io/nano"><path d="M0 0h48v48H0V0z" fill="#32342d"/><path d="M25 2h21v44H25V35l7-2c1.5 1.125 1.5 1.125 3 3 .188 3.188.188 3.188 0 6h7v-7l-2.812.188C36 35 36 35 34.063 33.75 33 32 33 32 33.313 30.313L34 28c.211-3.536.326-6.902-.687-10.312C33 16 33 16 34.063 14.25 36.752 12.515 38.869 12.791 42 13V6h-7l.188 2.813C35 12 35 12 33.5 13.875L32 15l-7-2V2zM2 2h21v11l-7 2c-1.5-1.125-1.5-1.125-3-3-.187-3.187-.187-3.187 0-6H6v7l2.813-.187C12 13 12 13 13.938 14.25 15 16 15 16 14.688 17.75L14 20c-.125 3.433-.147 6.41.688 9.75C15 32 15 32 13.938 33.813 11.244 35.463 9.094 35.206 6 35v7h7l-.187-2.812C13 36 13 36 14.5 34.125L16 33l7 2v11H2V2z" fill="#717e51"/><path d="M27 15c2.7 1.8 4.542 3.084 6 6 .43 3.872.317 5.525-1.875 8.813-2.506 2.58-3.38 3.105-6.937 3.5-3.918-.384-5.4-1.605-8.187-4.312-1.427-2.853-1.31-4.835-1-8 3.458-5.186 5.757-6.612 12-6z" fill="#f6f6f6"/><path d="M18 14l3 1-2.5 2.625C16.643 19.897 16 21 15.313 23.938 16.3 28.336 18.877 30.859 22 34l-2 1c-2.992-1.346-4.646-2.394-6.312-5.25-1.065-4.26-1.375-8.074.313-12.187L15 16h3v-2z" fill="#11120e"/><path d="M23 1h2v12h2v2h-7v-2h3V1z" fill="#060704"/><path d="M21 21h6v6h-6v-6z" fill="#414141"/><path d="M21 33h6v2h-2v12h-2l-.184-2.555-.254-3.32-.246-3.305C22.17 35.053 22.17 35.053 21 33z" fill="#040503"/><path d="M27 14h3v2h3l2 6c-3.726-1.242-5.393-3.111-8-6v-2z" fill="#181915"/><path d="M18 14l3 1-5 6-2-1 1-4h3v-2z" fill="#191917"/></svg>
+
+AddRelTag("ws", $textColor="purple", $lineColor="purple", $lineStyle = DashedLine())
+AddRelTag("http", $textColor="darkcyan", $lineColor="darkcyan", $lineStyle = DashedLine())
+
+Boundary(editor, Editor computer) {
+    Container(operator, "Website", "Container: Javascript + React", "Staat het backup team toe om codes in te voeren.", $sprite="chrome", $tags=container)
+    Container(websocket, "Websocket server", "Container: node.js", Regelt de verbinding tussen de website en TouchDesigner, $sprite="server", $tags=container)
+    Container(webserver, "Webserver", "Container: node.js", "Levert alle statische bestanden en de website.", $sprite="web", $tags=container)
+    Container(touchdesigner, "TouchDesigner", "Container: TouchDesigner Instance", Levert functionaliteiten voor de escape room, $sprite="TD" ,$tags=container)
+}
+
+Rel_R(webserver, operator, Levert een website aan browser, HTTP, $tags=http)
+
+Rel(operator, websocket, Stuurt API call naar, WS, $tags=ws)
+Rel_R(websocket, touchdesigner, Stuurt API call door, WS, $tags=ws)
+
+SHOW_FLOATING_LEGEND()
+@enduml

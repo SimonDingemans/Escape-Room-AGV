@@ -1,0 +1,33 @@
+# Summary
+
+[Introduction](00-introduction.md)
+
+---
+
+- [Context](01-context.md)
+- [Functional overview](02-functional-overview/README.md)
+  - [Domain stories](./02-functional-overview/domain-stories.md)
+  - [Functionalities](./02-functional-overview/functionalities.md)
+- [Deployment](03-deployment.md)
+- [Development environment](04-development-environment.md)
+- [Quality attributes](05-quality-attributes.md)
+- [Constraints](06-constraints.md)
+- [Principles](07-principles.md)
+- [Software architecture](08-software-architecture.md)
+- [Code](09-code.md)
+- [Data](10-data.md)
+- [Decision log](11-decision-log/README.md)
+    - [Record architecture decisions](11-decision-log/adr-001-record-architecture-decisions.md)
+    - [Statische pagina generator](11-decision-log/adr-002-statische-pagina-generator.md)
+    - [User Story Map Tool](11-decision-log/adr-003-user-story-map-tool.md)
+    - [TouchDesigner alternatieven](11-decision-log/adr-004-touchdesigner-alternatieven.md)
+    - [TouchDesigner interfacing](11-decision-log/adr-005-touchdesigner-interfacing.md)
+    - [UI in TouchDesigner](11-decision-log/adr-006-ui-in-touchdesigner.md)
+    - [Meerdere paginas](11-decision-log/adr-007-meerdere-paginas.md)
+    - [State management editor](11-decision-log/adr-008-state-management-editor.md)
+    - [data opslag](11-decision-log/adr-009-data-opslag.md)
+    - [websocket message filtering](11-decision-log/adr-010-websocket-message-filtering.md)
+    - [Database keuze](11-decision-log/adr-011-database-keuze.md)
+    - [Backend keuze](11-decision-log/adr-012-backend-keuze.md)
+    - [Meerdere SGB's](11-decision-log/adr-013-meerdere-SGBs.md)
+    - [Soorten testen](11-decision-log/adr-014-soorten-testen.md)

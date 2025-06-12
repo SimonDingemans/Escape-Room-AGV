@@ -1,0 +1,26 @@
+@startuml "Container diagram voor Escape room"
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+SHOW_PERSON_OUTLINE()
+
+title "Container diagram voor de Escape room"
+Person(operator, Operator,<<Persoon>>\nPersoon die het systeem beheert.)
+Person(backup, Backup-team,<<Persoon>>\n Team dat in de lege ruimte met de puzzels zit en toekijkt op de active-team.)
+
+Boundary(system, "Escape room", "Systeem") {
+    Container(frontend, "Web applicatie", "React.js + dnd kit", "De website waarmee de gebruiker een scenario kan afspelen.")
+    Container(backend, "Backend", "Node.js", Bevat alle logica die nodig is om de communicatie tussen de web applicatie en TouchDesigner mogelijk te maken)
+    Container(td, TouchDesigner, , Bevat alle logica voor het aansturen van de hardware)
+}
+
+Container_Ext(apparatuur, Overige apparatuur, "Beamers, speakers en lampen", Apparatuur waarmee beelden of hints worden getoond)
+
+
+Rel(operator, frontend, speelt scenario af)
+Rel(backup, frontend, voert code in)
+Rel(frontend, backend, API-request, HTTP/JSON)
+Rel(td, apparatuur, ?, ?)
+Rel_R(backend, td, Websocket request, WS/JSON)
+
+SHOW_LEGEND()
+@enduml

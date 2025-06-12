@@ -1,0 +1,1 @@
+To test the WebSocket server use the following [Postman Collection](https://.postman.co/workspace/My-Workspace~9d7380b3-e6b6-4502-84d3-1c7ab248b24e/collection/6822ff833aea5c8f8be1f6eb?action=share&creator=38366011)

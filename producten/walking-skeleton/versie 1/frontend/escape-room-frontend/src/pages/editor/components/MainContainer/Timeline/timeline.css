@@ -1,0 +1,48 @@
+.timeline {
+    width: calc(100% - 2rem);
+    padding: 12px 0;
+    margin: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-content: center;
+}
+
+.timeline-bar-wrapper {
+    position: relative;
+    height: 8px;
+    /*margin-bottom: 10px;*/
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.timeline-bar {
+    background: #e0e0e0;
+    height: 8px;
+    border-radius: 4px;
+    position: relative;
+    width: 100%;
+}
+
+.timeline-bar-segment {
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 8px;
+    background: #1976d2;
+    transform: translateX(-1px);
+}
+
+.timeline-marks {
+    display: flex;
+    justify-content: space-between;
+}
+
+.timeline-channel-name {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    left: -11rem;
+    max-width: 10rem;
+}

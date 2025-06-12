@@ -1,0 +1,18 @@
+@startuml "Context diagram voor Editor"
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+SHOW_PERSON_OUTLINE()
+HIDE_STEREOTYPE()
+
+title Context diagram voor Editor
+' Personen
+Person(bedenker, Scenario bedenker,<<Persoon>>\nPersoon die ideeën heeft voor scenario's.)
+
+' Systeem
+System(systeem, Editor,<<Systeem>>\n Scenario's kunnen bewerkt worden en getest worden in een simulator.)
+
+' Relaties
+Rel(bedenker, systeem, bewerkt scenario's en test deze)
+
+SHOW_LEGEND()
+@enduml

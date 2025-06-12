@@ -1,0 +1,72 @@
+@startuml
+
+'Configuration
+hide circle
+skinparam linetype ortho
+
+'Objecten
+object Fase {
+    name
+    isActive
+}
+
+object Time {
+    startRemainingTime
+    endRemainingTime
+}
+
+object Location {
+    name
+}
+
+object BackupEvent
+object OperatorEvent
+object TijdsgebondenEvent
+
+object Event {
+    name
+    file
+}
+
+object Media {
+    keuze uit {video, audio, light}
+}
+
+object Device {
+    hardware
+    channel
+}
+
+object Action {
+    keuze uit {start, stop}
+}
+
+'Relaties
+
+'Fase
+Fase --> TijdsgebondenEvent
+Fase --> BackupEvent
+Fase --> OperatorEvent
+Fase --> Location
+Fase --> Time
+
+'TijdsgebondenEvent
+TijdsgebondenEvent --> Time
+TijdsgebondenEvent --> Event
+
+'OperatorEvent
+OperatorEvent --> Action
+OperatorEvent --> Event
+
+'BackupEvent
+BackupEvent --> Action
+BackupEvent --> Time
+BackupEvent ----> Event
+
+'Event
+Event --> Device
+Event --> Media
+
+'Device
+Device ---> Location
+@enduml

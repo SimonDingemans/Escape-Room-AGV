@@ -1,0 +1,22 @@
+@startuml "Container diagram voor Editor"
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+SHOW_PERSON_OUTLINE()
+
+title "Container diagram voor de Editor"
+Person(bedenker, Scenario bedenker,<<Persoon>>\nPersoon die ideeën heeft voor scenario's.)
+
+Boundary(system, "Editor", "Systeem") {
+    Container(frontend, "Web applicatie", "React.js + dnd kit", "De website waarmee de gebruiker een scenario kan maken, bewerken en testen")
+    Container(backend, "Backend", "Node.js", Bevat alle logica die nodig is om een scenario te maken en om touchdesigner met de database te synchroniseren)
+    Container(td, TouchDesigner, , Bevat hardware en andere nodes van het scenario)
+    ContainerDb(db, Database, Microsoft SQL , Slaat data van scenario op)
+}
+
+Rel(bedenker, frontend, bewerkt scenario's en test deze)
+Rel(frontend, backend, API-request, HTTP/JSON)
+Rel_R(backend, td, Websocket request, WS/JSON)
+Rel(backend, db, Slaat data op in ,SQL/TCP)
+
+SHOW_LEGEND()
+@enduml

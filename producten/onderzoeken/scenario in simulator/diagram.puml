@@ -1,0 +1,45 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+HIDE_STEREOTYPE()
+SHOW_PERSON_OUTLINE()
+ skinparam linetype ortho
+
+Container_Boundary(systeem, Systeem){
+Component(fase,Fase)
+note left {
+Inleiding, Gebeurtenis, Complexiteit 1, Complexiteit 2, Ontknoping
+}
+
+Component(kamer, Kamer)
+Component(hints, Hints)
+note left {
+gegeven, nietBeschikbaar, beschikbaar
+}
+Component(apparatuur, Apparatuur)
+note left {
+aan, uit
+}
+Component(timer, Timer)
+}
+
+
+
+Rel_L(fase, kamer, 1)
+Rel_R(fase, timer,1..1)
+
+Rel(kamer, apparatuur, 1..*)
+Rel(fase, hints, 1..*)
+Rel(hints, apparatuur,)
+
+Component_Ext(scenario, Scenario)
+Rel(scenario, fase, wordt ingeladen)
+
+Person(docent, Docent)
+Person(backup, Backup team)
+
+Rel_U(docent, hints, zet hint om in gegeven hint ondanks status)
+Rel_U(backup, hints,mbv code\n zet nietBeschikbaar om in beschikbaar )
+
+Rel(docent, timer, kan timer stopzetten/pauzeren)
+
+@enduml

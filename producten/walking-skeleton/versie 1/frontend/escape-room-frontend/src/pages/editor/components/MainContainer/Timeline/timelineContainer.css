@@ -1,0 +1,9 @@
+.devices-list {
+    display: flex;
+    flex-direction: row;
+}
+
+.timelines-list {
+    display: flex;
+    flex-direction: column;
+}
